@@ -1,4 +1,5 @@
 #ifndef _ENCLAVE_H_
+
 #define _ENCLAVE_H_
 
 #include <stdlib.h>
