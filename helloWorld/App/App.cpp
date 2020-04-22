@@ -212,6 +212,8 @@ int SGX_CDECL main(int argc, char *argv[])
  
     printf_helloworld(global_eid);
 
+    pritnf_bazinga(global_eid);
+
     /* Destroy the enclave */
     sgx_destroy_enclave(global_eid);
     

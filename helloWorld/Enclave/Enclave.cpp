@@ -22,3 +22,8 @@ void printf_helloworld()
 {
     printf("Hello World\n");
 }
+
+void printf_bazinga(){
+    printf("Bazinga!!!\n");
+}
+
