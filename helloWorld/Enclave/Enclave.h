@@ -11,7 +11,7 @@ extern "C" {
 
 void printf(const char *fmt, ...);
 void printf_helloworld();
-void printf_bazinga();
+//void printf_bazinga();
 
 #if defined(__cplusplus)
 }

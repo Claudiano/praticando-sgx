@@ -20,10 +20,12 @@ void printf(const char *fmt, ...)
 
 void printf_helloworld()
 {
-    printf("Hello World\n");
+    printf("Hello World, Bazinga!!\n");
 }
 
-void printf_bazinga(){
+/*
+void printf_bazinga()
+{
     printf("Bazinga!!!\n");
 }
-
+*/
