@@ -29,6 +29,8 @@ void printf_bazinga()
     printf("Bazinga!!!\n");
 }
 
-int sum_notes(const int a){
+/*
+int sum_notes(int a){
     return a;
 }
+*/
