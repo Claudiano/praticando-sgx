@@ -214,7 +214,7 @@ int SGX_CDECL main(int argc, char *argv[])
 
     printf_bazinga(global_eid);
 
-    int res = sum_notes(global_eid, 1, 2);
+    int res = sum_notes(global_eid, 1);
 
     printf("Resultado da soma: %d.\n", res);
 
