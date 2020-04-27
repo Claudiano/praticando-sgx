@@ -1,0 +1,10 @@
+
+
+- gerar key file
+openssl pkcs8 –inform DER –in private_pkcs8.der –outform PEM –out private_pkcs1.pem
+
+- Gerar a chave privada com criptografia RSA
+openssl genrsa -out private_key.pem -3 3072
+
+- Gerar chave publica através da chave privada
+openssl rsa -in private_key.pem -pubout -out public_key.pem
