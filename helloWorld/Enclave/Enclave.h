@@ -12,7 +12,7 @@ extern "C" {
 void printf(const char *fmt, ...);
 void printf_helloworld();
 void printf_bazinga();
-int sum_notes(const int* res);
+void returns_int_ptr(int *p_return_ptr, size_t len)
 
 #if defined(__cplusplus)
 }

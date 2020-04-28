@@ -30,7 +30,12 @@ void printf_bazinga()
 }
 
 
-int sum_notes(int* a){
-    return 5+5;
+void returns_int_ptr(int *p_return_ptr, size_t len)
+{
+    int *p_ints = (int *) malloc(len*sizeof(int));
+    /* do some stuff */
+    memcpy(p_return_ptr, p_ints, len);
+    free(p_ints);
 }
+
 
