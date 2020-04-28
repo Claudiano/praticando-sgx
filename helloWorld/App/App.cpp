@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <iostream>
 #include <string.h>
 #include <assert.h>
 
@@ -213,10 +214,6 @@ int SGX_CDECL main(int argc, char *argv[])
     printf_helloworld(global_eid);
 
     printf_bazinga(global_eid);
-
-    int *p_ints = (int *) malloc(BUFSIZ * sizeof(int));
-
-    sgx_status_t ret = returns_int_ptr(global_eid, p_ints, BUFSIZ);
 
 
     int ptr;
