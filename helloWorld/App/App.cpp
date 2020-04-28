@@ -214,12 +214,12 @@ int SGX_CDECL main(int argc, char *argv[])
 
     printf_bazinga(global_eid);
 
-    int *p_ints = (int *) malloc(BUFFER_SIZE * sizeof(int));
+    int *p_ints = (int *) malloc(BUFSIZ * sizeof(int));
 
-    sgx_status_t ret = returns_int_ptr(eid, p_ints, BUFFER_SIZE);
+    sgx_status_t ret = returns_int_ptr(global_eid, p_ints, BUFSIZ);
 
 
-    printf(&p_ints);
+    printf("resultado: %d\n", &p_ints);
 
 /*
     int res = sum_notes(global_eid, 1);
