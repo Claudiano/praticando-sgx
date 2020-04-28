@@ -34,7 +34,7 @@ int generate_random_number() {
     return 42;
 }
 
-int somar_notas(int notaA, int notaB){
-    return notaA + notaB;
+int somar_notas(int *result, int notaA, int notaB){
+    result =  notaA + notaB;
 }
 
