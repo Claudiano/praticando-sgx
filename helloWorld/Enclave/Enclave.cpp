@@ -30,12 +30,8 @@ void printf_bazinga()
 }
 
 
-void returns_int_ptr(int *p_return_ptr, size_t len)
-{
-    int *p_ints = (int *) malloc(len*sizeof(int));
-    /* do some stuff */
-    wmemcpy(p_return_ptr, p_ints, len);
-    free(p_ints);
+int generate_random_number() {
+    ocall_print("Processing random number generation...");
+    return 42;
 }
-
 

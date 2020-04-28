@@ -219,7 +219,13 @@ int SGX_CDECL main(int argc, char *argv[])
     sgx_status_t ret = returns_int_ptr(global_eid, p_ints, BUFSIZ);
 
 
-    printf("resultado: %d\n", &p_ints);
+    int ptr;
+    sgx_status_t status = generate_random_number(global_eid, &ptr);
+    std::cout << status << std::endl;
+    if (status != SGX_SUCCESS) {
+        std::cout << "noob" << std::endl;
+    }
+    printf("Random number: %d\n", ptr);
 
 /*
     int res = sum_notes(global_eid, 1);
