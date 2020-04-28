@@ -12,8 +12,8 @@ enclave {
         public void printf_helloworld();
         public void printf_bazinga();
         public int generate_random_number(void);
-        public int somar_notas([in]const int notaA, 
-                               [in]const int notaB);
+        public int somar_notas([in]const int *notaA, 
+                               [in]const int *notaB);
         
     };
 
