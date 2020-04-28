@@ -31,7 +31,6 @@ void printf_bazinga()
 
 
 int generate_random_number() {
-    ocall_print("Processing random number generation...");
     return 42;
 }
 
