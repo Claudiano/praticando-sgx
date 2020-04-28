@@ -29,8 +29,8 @@ void printf_bazinga()
     printf("Bazinga!!!\n");
 }
 
-/*
-int sum_notes(int a){
-    return a;
+
+int sum_notes(int* a){
+    return 5+5;
 }
-*/
+

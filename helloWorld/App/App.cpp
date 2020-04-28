@@ -214,6 +214,12 @@ int SGX_CDECL main(int argc, char *argv[])
 
     printf_bazinga(global_eid);
 
+    int res
+
+    sgx_status_t status = sum_notes(global_eid, &res);
+
+    printf("Resultado da soma: %d.\n", res);
+
 /*
     int res = sum_notes(global_eid, 1);
 
