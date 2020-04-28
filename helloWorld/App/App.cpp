@@ -224,6 +224,13 @@ int SGX_CDECL main(int argc, char *argv[])
     }
     printf("Random number: %d\n", ptr);
 
+    status = somar_notas(global_eid, &ptr, 2, 2);
+    std::cout << status << std::endl;
+    if (status != SGX_SUCCESS) {
+        std::cout << "noob" << std::endl;
+    }
+    printf("Random number: %d\n", ptr);
+
 /*
     int res = sum_notes(global_eid, 1);
 
