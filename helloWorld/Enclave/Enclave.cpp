@@ -34,8 +34,7 @@ int generate_random_number() {
     return 42;
 }
 
-int somar_notas(int result){
-    printf("Result = %d\n", result);
-    return result
+void somar_notas(int *value, int *p_result){
+    *p_result = *value;
 }
 
