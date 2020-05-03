@@ -225,9 +225,10 @@ int SGX_CDECL main(int argc, char *argv[])
     printf("Random number: %d\n", ptr);
 
 
+    int32_t* a = 1;
 
 
-    int res = somar_notas(global_eid, 1);
+    int res = somar_notas(global_eid, a);
 
     printf("Resultado da soma: %d.\n", res);
 
