@@ -226,7 +226,7 @@ int SGX_CDECL main(int argc, char *argv[])
     printf("Random number: %d\n", ptr);
 
 
-    int* a;
+    int *a;
     int *result;
 
     a = 222;
