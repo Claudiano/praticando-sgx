@@ -12,7 +12,7 @@ enclave {
         public void printf_helloworld();
         public void printf_bazinga();
         public int generate_random_number(void);
-        public void somar_notas([in] int *value, [out] int *p_result);
+        public void somar_notas([in] int *p_notaA, [in] int *p_notaB, [out] int *p_result);
         
     };
 

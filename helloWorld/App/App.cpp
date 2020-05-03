@@ -226,15 +226,14 @@ int SGX_CDECL main(int argc, char *argv[])
     printf("Random number: %d\n", ptr);
 
 
-    int a = 222;
-    int result, notaA;
+    int result, notaA = 5, notaB = 8;
 
   
 
-    status = somar_notas(global_eid, &a, &result);
+    status = somar_notas(global_eid, &notaA, &notaB, &result);
 
-    printf("Resultado da soma: %d.\n", result);
-    printf("Resultado da soma: %d.\n", a);
+    printf(" %d + %d = %d.\n", notaA, notaB, result);
+
 
     /* Destroy the enclave */
     sgx_destroy_enclave(global_eid);

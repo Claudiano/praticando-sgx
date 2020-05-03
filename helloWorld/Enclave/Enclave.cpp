@@ -34,7 +34,7 @@ int generate_random_number() {
     return 42;
 }
 
-void somar_notas(int *value, int *p_result){
-    *p_result = *value;
+void somar_notas(int *p_notaA, int *p_notaB, int *p_result){
+    *p_result = *p_notaA + *p_notaB;
 }
 
