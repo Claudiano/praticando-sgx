@@ -224,20 +224,13 @@ int SGX_CDECL main(int argc, char *argv[])
     }
     printf("Random number: %d\n", ptr);
 
-    int *notaA = &ptr;
-    int *notaB = &ptr;
-    status = somar_notas(global_eid, &ptr, &notaA, &notaB);
-    std::cout << status << std::endl;
-    if (status != SGX_SUCCESS) {
-        std::cout << "noob" << std::endl;
-    }
-    printf("Random number: %d\n", ptr);
 
-/*
-    int res = sum_notes(global_eid, 1);
+
+
+    int res = sumar_notas(global_eid, 1);
 
     printf("Resultado da soma: %d.\n", res);
-*/
+
     /* Destroy the enclave */
     sgx_destroy_enclave(global_eid);
     
