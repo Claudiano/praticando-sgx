@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string.h>
 #include <assert.h>
+#include <cstdint>
 
 # include <unistd.h>
 # include <pwd.h>
@@ -226,11 +227,11 @@ int SGX_CDECL main(int argc, char *argv[])
 
 
     int32_t* a;
-    int *res;
+    int *result;
 
-    a = 1;
+    a = int32_t(1);
 
-    int res = somar_notas(global_eid, &res. &a);
+    int res = somar_notas(global_eid, &result, &a);
 
     printf("Resultado da soma: %d.\n", res);
 
