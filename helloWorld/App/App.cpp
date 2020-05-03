@@ -227,7 +227,7 @@ int SGX_CDECL main(int argc, char *argv[])
 
 
 
-    int res = sumar_notas(global_eid, 1);
+    int res = somar_notas(global_eid, 1);
 
     printf("Resultado da soma: %d.\n", res);
 
