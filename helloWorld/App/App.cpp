@@ -229,7 +229,7 @@ int SGX_CDECL main(int argc, char *argv[])
     int32_t* a;
     int *result;
 
-    a = {1};
+    a = 222;
 
     int res = somar_notas(global_eid, &result, &a);
 
