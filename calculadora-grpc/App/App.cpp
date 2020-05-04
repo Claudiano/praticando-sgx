@@ -213,7 +213,7 @@ int SGX_CDECL main(int argc, char *argv[])
     }
  
 
-    sgx_status_t status 
+    sgx_status_t status;
     int result, notaA = 5, notaB = 8;
 
     // Adição
