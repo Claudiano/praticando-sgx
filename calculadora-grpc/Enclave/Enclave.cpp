@@ -24,14 +24,11 @@ void calc_sum(int *p_notaA, int *p_notaB, int *p_result){
 }
 
 void calc_mult(int *p_notaA, int *p_notaB, int *p_result){
-    *p_result = *p_notaA + *p_notaB;
+    *p_result = *p_notaA * *p_notaB;
 }
 
-void calc_div(int *p_notaA, int *p_notaB, int *p_result){
-    *p_result = *p_notaA + *p_notaB;
-}
 
 void calc_sub(int *p_notaA, int *p_notaB, int *p_result){
-    *p_result = *p_notaA + *p_notaB;
+    *p_result = *p_notaA - *p_notaB;
 }
 

@@ -222,15 +222,11 @@ int SGX_CDECL main(int argc, char *argv[])
 
     // Multiplicação
     status = calc_mult(global_eid, &notaA, &notaB, &result);
-    printf(" %d + %d = %d.\n", notaA, notaB, result);
-
-    // Divisão
-    status = calc_div(global_eid, &notaA, &notaB, &result);
-    printf(" %d + %d = %d.\n", notaA, notaB, result);
+    printf(" %d * %d = %d.\n", notaA, notaB, result);
 
     // Subtração
     status = calc_sub(global_eid, &notaA, &notaB, &result);
-    printf(" %d + %d = %d.\n", notaA, notaB, result);
+    printf(" %d - %d = %d.\n", notaA, notaB, result);
 
     /* Destroy the enclave */
     sgx_destroy_enclave(global_eid);
