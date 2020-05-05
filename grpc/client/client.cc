@@ -81,7 +81,7 @@ class MathTestClient {
 };
 
 void Run() {
-    std::string address("0.0.0.0:5000");
+    std::string address("157.55.187.226:5000");
     MathTestClient client(
         grpc::CreateChannel(
             address, 

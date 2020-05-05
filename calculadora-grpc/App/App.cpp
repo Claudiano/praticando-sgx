@@ -12,6 +12,21 @@
 #include "App.h"
 #include "Enclave_u.h"
 
+#include <string>
+
+#include <grpcpp/grpcpp.h>
+#include "mathtest.grpc.pb.h"
+
+using grpc::Server;
+using grpc::ServerBuilder;
+using grpc::ServerContext;
+using grpc::Status;
+
+using mathtest::MathTest;
+using mathtest::MathRequest;
+using mathtest::MathReply;
+
+
 /* Global EID shared by multiple threads */
 sgx_enclave_id_t global_eid = 0;
 
@@ -197,6 +212,64 @@ void ocall_print_string(const char *str)
     printf("%s", str);
 }
 
+/* grpc */
+class MathServiceImplementation final : public MathTest::Service {
+    Status sendRequest(
+        ServerContext* context, 
+        const MathRequest* request, 
+        MathReply* reply
+    ) override {
+        int a = request->a();
+        int b = request->b();
+
+        reply->set_result(a * b);
+
+        return Status::OK;
+    } 
+
+     Status add(
+        ServerContext* context, 
+        const MathRequest* request, 
+        MathReply* reply
+    ) override {
+        int a = request->a();
+        int b = request->b();
+
+        reply->set_result(a + b);
+
+        return Status::OK;
+    } 
+
+
+     Status subtract(
+        ServerContext* context, 
+        const MathRequest* request, 
+        MathReply* reply
+    ) override {
+        int a = request->a();
+        int b = request->b();
+
+        reply->set_result(a - b);
+
+        return Status::OK;
+    } 
+};
+
+void Run() {
+    std::string address("0.0.0.0:5000");
+    MathServiceImplementation service;
+
+    ServerBuilder builder;
+
+    builder.AddListeningPort(address, grpc::InsecureServerCredentials());
+    builder.RegisterService(&service);
+
+    std::unique_ptr<Server> server(builder.BuildAndStart());
+    std::cout << "Server listening on port: " << address << std::endl;
+
+    server->Wait();
+}
+
 
 /* Application entry */
 int SGX_CDECL main(int argc, char *argv[])
@@ -230,6 +303,8 @@ int SGX_CDECL main(int argc, char *argv[])
 
     /* Destroy the enclave */
     sgx_destroy_enclave(global_eid);
+
+    Run();
     
     return 0;
 }
