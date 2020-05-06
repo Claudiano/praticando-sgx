@@ -1,6 +1,7 @@
-# include <unistd.h>
-# include <pwd.h>
-# define MAX_PATH FILENAME_MAX
+#include <stdio.h>
+#include <unistd.h>
+#include <pwd.h>
+#define MAX_PATH FILENAME_MAX
 
 #include "sgx_urts.h"
 #include "Enclave_u.h"
