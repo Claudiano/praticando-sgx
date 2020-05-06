@@ -13,7 +13,7 @@
 
 
 /* Global EID shared by multiple threads */
-sgx_enclave_id_t global_eid = 0;
+sgx_enclave_id_t *global_eid;
 
 
 
