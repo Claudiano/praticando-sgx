@@ -17,7 +17,7 @@ sgx_enclave_id_t global_eid = 0;
 
 
 /* Application entry */
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]){
 
 
 
