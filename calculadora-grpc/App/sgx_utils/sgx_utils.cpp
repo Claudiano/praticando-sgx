@@ -7,7 +7,7 @@
 
 
 /* Global EID shared by multiple threads */
-// sgx_enclave_id_t global_eid = 0;
+sgx_enclave_id_t global_eid = 0;
 
 typedef struct _sgx_errlist_t {
     sgx_status_t err;
@@ -118,7 +118,7 @@ void print_error_message(sgx_status_t ret)
  *   Step 2: call sgx_create_enclave to initialize an enclave instance
  *   Step 3: save the launch token if it is updated
  */
-int initialize_enclave(sgx_enclave_id_t eid)
+sgx_enclave_id_t initialize_enclave(void)
 {
     char token_path[MAX_PATH] = {'\0'};
     sgx_launch_token_t token = {0};
@@ -179,7 +179,7 @@ int initialize_enclave(sgx_enclave_id_t eid)
     if (write_num != sizeof(sgx_launch_token_t))
         printf("Warning: Failed to save launch token to \"%s\".\n", token_path);
     fclose(fp);
-    return 0;
+    return global_eid;
 }
 
 /* OCall functions */

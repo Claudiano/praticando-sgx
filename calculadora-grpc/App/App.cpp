@@ -24,8 +24,10 @@ int main(int argc, char *argv[]){
 
     std::cout << "global_eid = " << global_eid << std::endl;
 
+    global_eid = initialize_enclave();
+
     /* Initialize the enclave */
-    if(initialize_enclave(global_eid) < 0){
+    if(global_eid < 0){
         printf("Enter a character before exit ...\n");
         getchar();
         return -1; 
