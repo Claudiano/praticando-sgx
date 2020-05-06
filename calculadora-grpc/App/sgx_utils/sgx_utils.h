@@ -7,5 +7,5 @@ void print_error_message(sgx_status_t ret);
 
 int initialize_enclave(sgx_enclave_id_t* eid, const std::string& launch_token_path, const std::string& enclave_name);
 
-void ocall_print_string(const char *str); 
+
 #endif 
