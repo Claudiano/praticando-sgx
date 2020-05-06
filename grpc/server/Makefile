@@ -29,7 +29,6 @@ server: mathtest.pb.o mathtest.grpc.pb.o server.o
 	protoc -I=$(PROTOS_PATH) --cpp_out=. $<
 	@ echo $< debud 2 fim
 
-
 objFolder:
 	@ echo 'criando pasta compuilers'
 	@ mkdir -p compilers
