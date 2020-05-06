@@ -9,7 +9,7 @@
 
 #include "sgx_urts.h"
 #include "Enclave_u.h"
-#include "App.h"
+
 #include "sgx_utils/sgx_utils.h"
 
 
