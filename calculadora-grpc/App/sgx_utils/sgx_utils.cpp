@@ -5,7 +5,7 @@
 
 #include "sgx_urts.h"
 #include "Enclave_u.h"
-#include "App/sgx_utils/sgx_utils.h"
+#include "sgx_utils.h"
 
 
 /* Global EID shared by multiple threads */
