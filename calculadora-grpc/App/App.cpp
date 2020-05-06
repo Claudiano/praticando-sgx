@@ -13,7 +13,7 @@
 
 
 /* Global EID shared by multiple threads */
-sgx_enclave_id_t global_eid* = 0;
+sgx_enclave_id_t global_eid = 0;
 
 
 
@@ -22,7 +22,7 @@ sgx_enclave_id_t global_eid* = 0;
 /* Application entry */
 int main(int argc, char *argv[]){
 
-
+    printf(global_eid);
 
     /* Initialize the enclave */
     if(initialize_enclave(&global_eid) < 0){
