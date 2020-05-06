@@ -5,7 +5,7 @@
 
 void print_error_message(sgx_status_t ret);
 
-sgx_enclave_id_t initialize_enclave(void);
+sgx_enclave_id_t initialize_enclave();
 
 
 #endif 

@@ -118,7 +118,7 @@ void print_error_message(sgx_status_t ret)
  *   Step 2: call sgx_create_enclave to initialize an enclave instance
  *   Step 3: save the launch token if it is updated
  */
-sgx_enclave_id_t initialize_enclave(void)
+sgx_enclave_id_t initialize_enclave()
 {
     char token_path[MAX_PATH] = {'\0'};
     sgx_launch_token_t token = {0};
