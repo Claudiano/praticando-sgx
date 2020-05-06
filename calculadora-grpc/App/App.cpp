@@ -13,7 +13,7 @@
 
 
 /* Global EID shared by multiple threads */
-sgx_enclave_id_t *global_eid;
+sgx_enclave_id_t global_eid = 0;
 
 
 
@@ -25,7 +25,7 @@ int main(int argc, char *argv[]){
     std::cout << "global_eid = " << global_eid << std::endl;
 
     /* Initialize the enclave */
-    if(initialize_enclave(&global_eid) < 0){
+    if(initialize_enclave(global_eid) < 0){
         printf("Enter a character before exit ...\n");
         getchar();
         return -1; 
