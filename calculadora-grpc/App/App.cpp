@@ -9,13 +9,12 @@
 
 #include "sgx_urts.h"
 #include "Enclave_u.h"
+#include "App.h"
 #include "sgx_utils/sgx_utils.h"
 
 
 /* Global EID shared by multiple threads */
 sgx_enclave_id_t global_eid = 0;
-
-
 
 
 
