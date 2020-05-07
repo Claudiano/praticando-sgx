@@ -66,6 +66,26 @@ else
         SGX_COMMON_CFLAGS += -O2
 endif
 
+
+######## GRPC Settings ########
+LDFLAGS = -L/usr/local/lib `pkg-config --libs protobuf grpc++`\
+           -Wl,--no-as-needed -lgrpc++_reflection -Wl,--as-needed\
+           -ldl
+
+CXX = g++
+CPPFLAGS += `pkg-config --cflags protobuf grpc`
+CXXFLAGS += -std=c++11
+
+GRPC_CPP_PLUGIN = grpc_cpp_plugin
+GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
+
+SERVICE_PATH = ./server
+PROTOS_PATH = .$(SERVICE_PATH)/protos
+
+vpath %.proto $(PROTOS_PATH)
+
+
+
 ######## App Settings ########
 
 ifneq ($(SGX_MODE), HW)
@@ -243,7 +263,29 @@ $(Signed_Enclave_Name): $(Enclave_Name)
 	@$(SGX_ENCLAVE_SIGNER) sign -key Enclave/Enclave_private.pem -enclave $(Enclave_Name) -out $@ -config $(Enclave_Config_File)
 	@echo "SIGN =>  $@"
 
+
+########## GRPC Ojects #################
+
+server: $(SERVICE_PATH)/mathtest.pb.o $(SERVICE_PATH)/mathtest.grpc.pb.o $(SERVICE_PATH)/server.o
+	@ echo 'server executado'
+	$(CXX) $^ $(LDFLAGS) -o $@
+
+%.grpc.pb.cc: %.proto
+	@ echo $< debud 1
+	protoc -I=$(PROTOS_PATH) --grpc_out=. --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
+	@ echo $< debud 1 fim
+
+%.pb.cc: %.proto
+	@ echo $< debud 2
+	protoc -I=$(PROTOS_PATH) --cpp_out=. $<
+	@ echo $< debud 2 fim
+
+objFolder:
+	@ echo 'criando pasta compuilers'
+	@ mkdir -p compilers
+
+
 .PHONY: clean
 
 clean:
-	@rm -f .config_* $(App_Name) $(Enclave_Name) $(Signed_Enclave_Name) $(App_Cpp_Objects) App/Enclave_u.* $(Enclave_Cpp_Objects) Enclave/Enclave_t.*
+	@rm -f .config_* $(App_Name) $(Enclave_Name) $(Signed_Enclave_Name) $(App_Cpp_Objects) App/Enclave_u.* $(Enclave_Cpp_Objects) Enclave/Enclave_t.* $(SERVICE_PATH)/*.o $(SERVICE_PATH)/*.pb.cc $(SERVICE_PATH)/*.pb.h
