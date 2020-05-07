@@ -24,10 +24,10 @@ int main(int argc, char *argv[]){
 
     std::cout << "global_eid = " << global_eid << std::endl;
 
-    global_eid = initialize_enclave();
+    global_eid = ;
 
     /* Initialize the enclave */
-    if(global_eid < 0){
+    if(initialize_enclave() < 0){
         printf("Enter a character before exit ...\n");
         getchar();
         return -1; 
@@ -45,8 +45,8 @@ int main(int argc, char *argv[]){
     cout << notaA << " * "  << notaB << " = " << result << endl;
 
     // Subtração
-    status = calc_sub(global_eid, &notaA, &notaB, &result);
-    cout << notaA << " - "  << notaB << " = " << &result << endl;
+    status = calc_sub(global_eid, notaA, notaB, result);
+    cout << notaA << " - "  << notaB << " = " << result << endl;
 
 
 

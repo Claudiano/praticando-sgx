@@ -120,7 +120,7 @@ void print_error_message(sgx_status_t ret)
  *   Step 2: call sgx_create_enclave to initialize an enclave instance
  *   Step 3: save the launch token if it is updated
  */
-sgx_enclave_id_t initialize_enclave()
+int initialize_enclave(void)
 {
     char token_path[MAX_PATH] = {'\0'};
     sgx_launch_token_t token = {0};
@@ -181,6 +181,6 @@ sgx_enclave_id_t initialize_enclave()
     if (write_num != sizeof(sgx_launch_token_t))
         printf("Warning: Failed to save launch token to \"%s\".\n", token_path);
     fclose(fp);
-    return global_eid;
+    return 0;
 }
 
