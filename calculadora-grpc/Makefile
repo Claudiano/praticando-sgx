@@ -188,7 +188,7 @@ endif
 endif
 
 
-.PHONY: all run
+.PHONY: all run server
 
 ifeq ($(Build_Mode), HW_RELEASE)
 all: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Enclave_Name)
