@@ -35,7 +35,6 @@ extern "C" {
 
 void print_error_message(sgx_status_t ret);
 
-void ocall_print_string(const char *str);
 
 sgx_enclave_id_t initialize_enclave();
 
