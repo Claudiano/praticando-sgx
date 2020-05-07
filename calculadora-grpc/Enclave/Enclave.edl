@@ -11,7 +11,7 @@ enclave {
     trusted {
         public void calc_sum([in] int *p_notaA, [in] int *p_notaB, [out] int *p_result);
         public void calc_mult([in] int *p_notaA, [in] int *p_notaB, [out] int *p_result);
-        public void calc_sub([in] int p_notaA, [in] int p_notaB, [out] int p_result);
+        public void calc_sub([in] int *p_notaA, [in] int *p_notaB, [out] int *p_result);
         
     };
 
