@@ -46,7 +46,7 @@ int main(int argc, char *argv[]){
 
     // Subtração
     status = calc_sub(global_eid, &notaA, &notaB, &result);
-    cout << notaA << " - "  << notaB << " = " << result << endl;
+    cout << notaA << " - "  << notaB << " = " << &result << endl;
 
 
 
