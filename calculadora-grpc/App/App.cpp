@@ -12,6 +12,7 @@
 
 #include "sgx_utils/sgx_utils.h"
 
+using namespace std;
 
 /* Global EID shared by multiple threads */
 // sgx_enclave_id_t global_eid = 0;
@@ -31,22 +32,23 @@ int main(int argc, char *argv[]){
         getchar();
         return -1; 
     }
- 
 
     sgx_status_t status;
     int result, notaA = 5, notaB = 8;
 
     // Adição
     status = calc_sum(global_eid, &notaA, &notaB, &result);
-    printf(" %d + %d = %d.\n", notaA, notaB, result);
+    cout << notaA << " + "  << notaB << " = " << result << endl;
 
     // Multiplicação
     status = calc_mult(global_eid, &notaA, &notaB, &result);
-    printf(" %d * %d = %d.\n", notaA, notaB, result);
+    cout << notaA << " * "  << notaB << " = " << result << endl;
 
     // Subtração
     status = calc_sub(global_eid, &notaA, &notaB, &result);
-    printf(" %d - %d = %d.\n", notaA, notaB, result);
+    cout << notaA << " - "  << notaB << " = " << result << endl;
+
+
 
     /* Destroy the enclave */
     sgx_destroy_enclave(global_eid);
