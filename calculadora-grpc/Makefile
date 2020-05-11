@@ -79,8 +79,9 @@ CXXFLAGS += -std=c++11
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
 GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 
-SERVICE_PATH = ./server
-PROTOS_PATH = .$(SERVICE_PATH)/protos
+SERVICE_GRPC_PATH = ./server
+PROTOS_PATH = $(SERVICE_GRPC_PATH)/protos
+BUILD_PATH=./build/bin
 
 vpath %.proto $(PROTOS_PATH)
 
@@ -188,10 +189,10 @@ endif
 endif
 
 
-.PHONY: all run 
+.PHONY: all run server
 
 ifeq ($(Build_Mode), HW_RELEASE)
-all: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Enclave_Name) server
+all: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Enclave_Name) 
 	@echo "The project has been built in release hardware mode."
 	@echo "Please sign the $(Enclave_Name) first with your signing key before you run the $(App_Name) to launch and access the enclave."
 	@echo "To sign the enclave use the command:"
@@ -199,7 +200,7 @@ all: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Enclave_Name) server
 	@echo "You can also sign the enclave using an external signing tool."
 	@echo "To build the project in simulation mode set SGX_MODE=SIM. To build the project in prerelease mode set SGX_PRERELEASE=1 and SGX_MODE=HW."
 else
-all: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Signed_Enclave_Name) server
+all: .config_$(Build_Mode)_$(SGX_ARCH) $(App_Name) $(Signed_Enclave_Name) 
 ifeq ($(Build_Mode), HW_DEBUG)
 	@echo "The project has been built in debug hardware mode."
 else ifeq ($(Build_Mode), SIM_DEBUG)
@@ -266,24 +267,23 @@ $(Signed_Enclave_Name): $(Enclave_Name)
 
 ########## GRPC Ojects #################
 
-server: $(SERVICE_PATH)/mathtest.pb.o $(SERVICE_PATH)/mathtest.grpc.pb.o $(SERVICE_PATH)/server.o
+server: mathtest.pb.o mathtest.grpc.pb.o ./server/server.o
 	@ echo 'server executado'
-	$(CXX) $^ $(LDFLAGS) -o $@
+	$(CXX) $^ $(LDFLAGS) -o $(BUILD_PATH)/$@
 
 %.grpc.pb.cc: %.proto
-	@ echo $< debud 1
+	@ echo 'p 1 ' CPPFLAGS
 	protoc -I=$(PROTOS_PATH) --grpc_out=. --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
-	@ echo $< debud 1 fim
+	@ echo 'p 1'
 
 %.pb.cc: %.proto
-	@ echo $< debud 2
+	@ echo 'p 2 debug ' $(LDFLAGS)
 	protoc -I=$(PROTOS_PATH) --cpp_out=. $<
-	@ echo $< debud 2 fim
+	@ echo 'p 2'
 
 objFolder:
 	@ echo 'criando pasta compuilers'
-	@ mkdir -p compilers
-
+	@ mkdir -p $(BUILD_PATH)
 
 .PHONY: clean
 

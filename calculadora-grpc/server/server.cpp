@@ -1,8 +1,8 @@
 #include <string>
 
 #include <grpcpp/grpcpp.h>
-#include "mathtest.grpc.pb.h"
-#include "server/server.h"
+#include "../mathtest.grpc.pb.h"
+#include "server.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
