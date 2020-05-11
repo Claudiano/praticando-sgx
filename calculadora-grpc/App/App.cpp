@@ -11,7 +11,7 @@
 #include "Enclave_u.h"
 
 #include "sgx_utils/sgx_utils.h"
-#include "server/server.h"
+#include "../server/server.h"
 
 using namespace std;
 
