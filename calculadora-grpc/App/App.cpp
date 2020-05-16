@@ -1,16 +1,8 @@
-#include <stdio.h>
-#include <iostream>
-#include <string.h>
-#include <assert.h>
-#include <cstdint>
 
 #include <stdio.h>
 #include <iostream>
+#include "security/serviceEnclave.h"
 
-#include "sgx_urts.h"
-#include "Enclave_u.h"
-
-#include "sgx_utils/sgx_utils.h"
 
 
 using namespace std;
@@ -23,37 +15,7 @@ using namespace std;
 /* Application entry */
 int main(int argc, char *argv[]){
 
-    std::cout << "global_eid = " << global_eid << std::endl;
-
- 
-    /* Initialize the enclave */
-    if(initialize_enclave() < 0){
-        printf("Enter a character before exit ...\n");
-        getchar();
-        return -1; 
-    }
-
-    sgx_status_t status;
-    int result, notaA = 5, notaB = 8;
-
-    // Adição
-    status = calc_sum(global_eid, &notaA, &notaB, &result);
-    cout << notaA << " + "  << notaB << " = " << result << endl;
-
-    // Multiplicação
-    status = calc_mult(global_eid, &notaA, &notaB, &result);
-    cout << notaA << " * "  << notaB << " = " << result << endl;
-
-    // Subtração
-    status = calc_sub(global_eid, &notaA, &notaB, &result);
-    cout << notaA << " - "  << notaB << " = " << result << endl;
-
-
-
-    /* Destroy the enclave */
-    sgx_destroy_enclave(global_eid);
-
-  
+    std::cout << "global_eid = " << somar(5, 5) << std::endl;
 
     
     return 0;
